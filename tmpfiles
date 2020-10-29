@@ -1,0 +1,5 @@
+#Type Path        Mode User Group Age Argument
+f     /etc/3proxy/3proxy.cfg   - threeproxy threeproxy  - -
+f     /etc/3proxy/3proxy.cfg.sample   - threeproxy threeproxy  - -
+d     /run/3proxy/ 0750 threeproxy threeproxy - -
+z     /var/log/3proxy/ 755 threeproxy threeproxy - -
