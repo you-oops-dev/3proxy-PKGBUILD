@@ -1,7 +1,10 @@
-#Maintainer: naruto522ru <>
+# Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
+# Unofficial Maintainer: naruto522ru <The profile (AUR) has all the contacts for communication or write to GitHub>
+# Contributor:: Ilya Basin <basinilya at gmail dot com>
+
 pkgname=3proxy
 pkgver=0.9.0
-pkgrel=1
+pkgrel=4
 pkgdesc="A tiny crossplatform proxy server"
 arch=('any')
 url="http://www.3proxy.ru/"
@@ -15,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/z3APA3A/$pkgname/archive/$p
 	"tmpfiles"
 )
 md5sums=('d47099e82914d854daac4688740d625c' #tarboll 3proxy
-         '99fbf305116df79fde910402c1132295' #3proxy.service
+         '41c94fc6d079f5139f10568195b52501' #3proxy.service
 	 '6cafc741aa7ca8aab877f24a132c8bd1' #sysuser
 	 '4a566e594c1541f65d0366e1f618b5ce' #tmpfiles
 )
@@ -43,7 +46,7 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	make install DESTDIR="$pkgdir" ETCDIR="$pkgdir/etc/$pkgname"  INITDIR="$pkgdir/etc/init.d" BINDIR="$pkgdir/usr/bin"
-        #Fix name binary See ---> https://github.com/BlackArch/blackarch/blob/01cbd6e1c796e32f901ecd3bd46f012a06026b34/packag>
+        #Fix name binary See ---> https://github.com/BlackArch/blackarch/blob/c950db958b3d3ef212b185e46707838798ca9557/packages/3proxy/PKGBUILD#L40
         mv "$pkgdir/usr/bin/proxy" "$pkgdir/usr/bin/$pkgname-proxy"
         install -dm 755 "$pkgdir/usr/lib/systemd/system/"
 	install -dm 755 "$pkgdir/usr/lib/"
