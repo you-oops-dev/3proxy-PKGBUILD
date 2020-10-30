@@ -1,14 +1,13 @@
 [Unit]
-Description=3proxy
+Description=3proxy Proxy Server
 After=network.target
 
 [Service]
-Type=simple
+Type=forking
 ExecStart=/usr/bin/3proxy /etc/3proxy/3proxy.cfg
 User=threeproxy
 Group=threeproxy
 Restart=on-failure
-PrivateUsers=true
 
 [Install]
 WantedBy=multi-user.target
