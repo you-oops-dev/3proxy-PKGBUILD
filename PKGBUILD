@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/z3APA3A/$pkgname/archive/$p
 	"tmpfiles"
 )
 md5sums=('d47099e82914d854daac4688740d625c' #tarboll 3proxy
-         '41c94fc6d079f5139f10568195b52501' #3proxy.service
+         '24d794e1fd9e6111590dcdbca6138c60' #3proxy.service
 	 '6cafc741aa7ca8aab877f24a132c8bd1' #sysuser
 	 '4a566e594c1541f65d0366e1f618b5ce' #tmpfiles
 )
