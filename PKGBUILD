@@ -3,8 +3,8 @@
 # Contributor:: Ilya Basin <basinilya at gmail dot com>
 
 pkgname=3proxy
-pkgver=0.9.0
-pkgrel=4
+pkgver=0.9.2
+pkgrel=1
 pkgdesc="A tiny crossplatform proxy server"
 arch=('any')
 url="http://www.3proxy.ru/"
@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/z3APA3A/$pkgname/archive/$p
 	"sysusers"
 	"tmpfiles"
 )
-md5sums=('d47099e82914d854daac4688740d625c' #tarboll 3proxy
+md5sums=('e57ea3d597dfad7797e87380ce67a68a' #tarboll 3proxy
          '24d794e1fd9e6111590dcdbca6138c60' #3proxy.service
 	 '6cafc741aa7ca8aab877f24a132c8bd1' #sysuser
 	 '4a566e594c1541f65d0366e1f618b5ce' #tmpfiles
@@ -30,12 +30,12 @@ prepare() {
 	#Backup file
 	cp -p ./Makefile.Linux ./Makefile.Linux.bak
         ###----> See:https://gitweb.gentoo.org/repo/gentoo.git/tree/net-proxy/3proxy/files/3proxy-0.9.0-gentoo.patch
-	echo -e "  \e[1;34m->\033[0m \e[1;37mPatching Makefile for Linux...\033[0m"
+	echo -e "\e[1;34m->\033[0m \e[1;37mPatching Makefile for Linux...\033[0m"
 	sed --follow-symlinks -i -e "s/CFLAGS = -g  -fPIC -O2 -fno-strict-aliasing -c -pthread -DWITHSPLICE -D_GNU_SOURCE -DGETHOSTBYNAME_R -D_THREAD_SAFE -D_REENTRANT -DNOODBC -DWITH_STD_MALLOC -DFD_SETSIZE=4096 -DWITH_POLL -DWITH_NETFILTER/CFLAGS += -fPIC -fno-strict-aliasing -c -pthread -DWITHSPLICE -D_GNU_SOURCE -DGETHOSTBYNAME_R -D_THREAD_SAFE -D_REENTRANT -DNOODBC -DWITH_STD_MALLOC -DFD_SETSIZE=4096 -DWITH_POLL -DWITH_NETFILTER/" ./Makefile #Fix CFLAGS
 	sed --follow-symlinks -i -e "s/LDFLAGS = -fPIE -O2 -fno-strict-aliasing -pthread/LDFLAGS += -fPIE -fno-strict-aliasing -pthread/" ./Makefile  #Fix LDFLAGS
 	sed --follow-symlinks -i -e "s/CC = gcc/CC ?= gcc/" ./Makefile
 	sed --follow-symlinks -i -e "s/LN = gcc/LN ?= gcc/" ./Makefile
-	sed -i '137,$d' ./Makefile
+	#sed -i '137,$d' ./Makefile
 }
 
 build() {
@@ -53,9 +53,10 @@ package() {
 	install -dm 755 "$pkgdir/usr/share/licenses/$pkgname/"
 	mv "$pkgdir"/usr/local/3proxy/libexec/*.so "$pkgdir"/usr/lib/
 	rm -r "$pkgdir"/usr/local/
-        rm "$pkgdir"/etc/3proxy/*
+        rm -r "$pkgdir"/etc/3proxy/*
+	rm -r "$pkgdir"/etc/init.d/
         rm -r "$pkgdir"/var/
-        # Will fix the permissions for us. (see /usr/lib/tmpfiles.d/3proxy.conf)
+	# Will fix the permissions for us. (see /usr/lib/tmpfiles.d/3proxy.conf)
         install -d -o root -g root -m 755 "$pkgdir"/var/log/3proxy
         install -Dm644 "$srcdir/3proxy.service" "$pkgdir/usr/lib/systemd/system/"
 	touch "$pkgdir/etc/$pkgname/$pkgname.cfg" && chmod 600 "$pkgdir/etc/$pkgname/$pkgname.cfg"
