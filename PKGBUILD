@@ -3,7 +3,7 @@
 # Contributor:: Ilya Basin <basinilya at gmail dot com>
 
 pkgname=3proxy
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="A tiny crossplatform proxy server"
 arch=('any')
@@ -17,11 +17,11 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/z3APA3A/$pkgname/archive/$p
 	"sysusers"
 	"tmpfiles"
 )
-md5sums=('e57ea3d597dfad7797e87380ce67a68a' #tarboll 3proxy
-         '24d794e1fd9e6111590dcdbca6138c60' #3proxy.service
-	 '6cafc741aa7ca8aab877f24a132c8bd1' #sysuser
-	 '4a566e594c1541f65d0366e1f618b5ce' #tmpfiles
-)
+
+sha256sums=('84861f4a7879468728c6a4ddd6ca2a8334a5249831282e70d059dc0e09304c72'
+            'bcaaf2e995dec828cac9cc8c0efe9deab9a369f476b502b2a8ef1e58cb9f4eda'
+            '862161b0e139a0c501b7c1d1941189234018d9730013f3bb23797a7893a098f5'
+            '790126915b39e5838ff77e2f416f3652ca69a380282f60c82a7c2f8eae516094')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
