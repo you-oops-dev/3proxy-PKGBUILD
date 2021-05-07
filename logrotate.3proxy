@@ -1,0 +1,7 @@
+/var/log/3proxy/*.log {
+    missingok
+    notifempty
+    nocreate
+    sharedscripts
+    compress
+}
