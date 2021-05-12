@@ -11,7 +11,8 @@ url="http://www.3proxy.ru/"
 license=('BSD')
 depends=('glibc')
 makedepends=('gcc' 'make')
-backup=('etc/3proxy/3proxy.cfg')
+backup=(etc/3proxy/3proxy.cfg
+        etc/logrotate.d/nginx)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/z3APA3A/$pkgname/archive/$pkgver.tar.gz"
         "$pkgname.service"
         "sysusers"
