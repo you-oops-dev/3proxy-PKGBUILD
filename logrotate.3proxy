@@ -1,7 +1,12 @@
 /var/log/3proxy/*.log {
+    su threeproxy threeproxy
+    rotate 3
     missingok
     notifempty
     nocreate
     sharedscripts
     compress
+    postrotate
+        /usr/bin/systemctl restart 3proxy.service
+    endscript
 }
