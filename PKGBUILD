@@ -4,7 +4,7 @@
 
 pkgname=3proxy
 pkgver=0.9.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A tiny crossplatform proxy server"
 arch=('any')
 url="http://www.3proxy.ru/"
@@ -28,21 +28,21 @@ sha256sums=('84861f4a7879468728c6a4ddd6ca2a8334a5249831282e70d059dc0e09304c72'
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-#For compatibility
-  ln -s ./Makefile.Linux ./Makefile
 #Backup file
   cp -p ./Makefile.Linux ./Makefile.Linux.bak
 ###----> See:https://gitweb.gentoo.org/repo/gentoo.git/tree/net-proxy/3proxy/files/3proxy-0.9.0-gentoo.patch
   echo -e "\e[1;34m->\033[0m \e[1;37mPatching Makefile for Linux...\033[0m"
-  sed --follow-symlinks -i -e "s/CFLAGS = -g  -fPIC -O2 -fno-strict-aliasing -c -pthread -DWITHSPLICE -D_GNU_SOURCE -DGETHOSTBYNAME_R -D_THREAD_SAFE -D_REENTRANT -DNOODBC -DWITH_STD_MALLOC -DFD_SETSIZE=4096 -DWITH_POLL -DWITH_NETFILTER/CFLAGS += -fPIC -fno-strict-aliasing -c -pthread -DWITHSPLICE -D_GNU_SOURCE -DGETHOSTBYNAME_R -D_THREAD_SAFE -D_REENTRANT -DNOODBC -DWITH_STD_MALLOC -DFD_SETSIZE=4096 -DWITH_POLL -DWITH_NETFILTER/" ./Makefile #Fix CFLAGS
-  sed --follow-symlinks -i -e "s/LDFLAGS = -fPIE -O2 -fno-strict-aliasing -pthread/LDFLAGS += -fPIE -fno-strict-aliasing -pthread/" ./Makefile  #Fix LDFLAGS
-  sed --follow-symlinks -i -e "s/CC = gcc/CC ?= gcc/" ./Makefile
-  sed --follow-symlinks -i -e "s/LN = gcc/LN ?= gcc/" ./Makefile
+  sed -i -e "s/CFLAGS = -g  -fPIC -O2 -fno-strict-aliasing -c -pthread -DWITHSPLICE -D_GNU_SOURCE -DGETHOSTBYNAME_R -D_THREAD_SAFE -D_REENTRANT -DNOODBC -DWITH_STD_MALLOC -DFD_SETSIZE=4096 -DWITH_POLL -DWITH_NETFILTER/CFLAGS += -fPIC -fno-strict-aliasing -c -pthread -DWITHSPLICE -D_GNU_SOURCE -DGETHOSTBYNAME_R -D_THREAD_SAFE -D_REENTRANT -DNOODBC -DWITH_STD_MALLOC -DFD_SETSIZE=4096 -DWITH_POLL -DWITH_NETFILTER/" ./Makefile.Linux #Fix CFLAGS
+  sed -i -e "s/LDFLAGS = -fPIE -O2 -fno-strict-aliasing -pthread/LDFLAGS += -fPIE -fno-strict-aliasing -pthread/" ./Makefile.Linux  #Fix LDFLAGS
+  sed -i -e "s/CC = gcc/CC ?= gcc/" ./Makefile.Linux
+  sed -i -e "s/LN = gcc/LN ?= gcc/" ./Makefile.Linux
   #sed -i '137,$d' ./Makefile
 }
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+#For compatibility
+  ln -s ./Makefile.Linux ./Makefile
   make prefix=/usr DESTDIR="$pkgdir" ETCDIR="/etc/$pkgname" INITDIR="/etc/init.d" BINDIR="/usr/bin"
 }
 
@@ -52,10 +52,10 @@ package() {
 #Fix name binary See ---> https://github.com/BlackArch/blackarch/blob/c950db958b3d3ef212b185e46707838798ca9557/packages/3proxy/PKGBUILD#L40
   mv "$pkgdir/usr/bin/proxy" "$pkgdir/usr/bin/$pkgname-proxy"
   install -dm 755 "$pkgdir/usr/lib/systemd/system/" \
-                  "$pkgdir/usr/lib/" \
+                  "$pkgdir/usr/lib/$pkgname" \
                   "$pkgdir/usr/share/licenses/$pkgname/" \
                   "$pkgdir/etc/logrotate.d/"
-  mv "$pkgdir"/usr/local/3proxy/libexec/*.so "$pkgdir"/usr/lib/
+  mv "$pkgdir"/usr/local/3proxy/libexec/*.so "$pkgdir"/usr/lib/$pkgname
   rm -r "$pkgdir"/usr/local/ \
         "$pkgdir"/etc/3proxy/* \
         "$pkgdir"/etc/init.d/ \
