@@ -25,27 +25,26 @@ jobs:
           target: 'srcinfo'
           pkgname: '.build_action'
 
-      - name: Validate binary
-        id: validate-3proxy
-        uses: 2m/arch-pkgbuild-builder@v1.18
-        with:
-          target: 'run'
-          pkgname: '.build_action'
-          command: '3proxy -v'
-
-      - name: Validate binary
-        id: validate-socks
-        uses: 2m/arch-pkgbuild-builder@v1.18
-        with:
-          target: 'run'
-          pkgname: '.build_action'
-          command: 'socks -v'
-
-      - name: Validate binary
-        id: validate-3proxy-proxy
-        uses: 2m/arch-pkgbuild-builder@v1.18
-        with:
-          target: 'run'
-          pkgname: '.build_action'
-          command: '3proxy-proxy -v'
-
+#      - name: Validate binary
+#        id: validate-3proxy
+#        uses: 2m/arch-pkgbuild-builder@v1.18
+#        with:
+#          target: 'run'
+#          pkgname: '.build_action'
+#          command: '3proxy -v'
+#
+#      - name: Validate binary
+#        id: validate-socks
+#        uses: 2m/arch-pkgbuild-builder@v1.18
+#        with:
+#          target: 'run'
+#          pkgname: '.build_action'
+#          command: 'socks -v'
+#
+#      - name: Validate binary
+#        id: validate-3proxy-proxy
+#        uses: 2m/arch-pkgbuild-builder@v1.18
+#        with:
+#          target: 'run'
+#          pkgname: '.build_action'
+#          command: '3proxy-proxy -v'
