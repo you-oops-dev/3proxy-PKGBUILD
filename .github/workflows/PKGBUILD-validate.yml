@@ -3,6 +3,7 @@ name: PKGBUILD-validate
 
 on:
   push:
+workflow_dispatch
 
 jobs:
   validation:
