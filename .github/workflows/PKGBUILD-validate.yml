@@ -3,6 +3,8 @@ name: PKGBUILD-validate
 
 on:
   push:
+    tags:
+    - 'v*'
   workflow_dispatch:
 
 jobs:
