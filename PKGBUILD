@@ -3,8 +3,8 @@
 # Contributor:: Ilya Basin <basinilya at gmail dot com>
 
 pkgname=3proxy
-pkgver=0.9.3
-pkgrel=5
+pkgver=0.9.4
+pkgrel=1
 pkgdesc="A tiny crossplatform proxy server"
 arch=('any')
 url="http://www.3proxy.ru/"
@@ -20,7 +20,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/z3APA3A/$pkgname/archive/$p
         "logrotate.3proxy"
 )
 
-sha256sums=('84861f4a7879468728c6a4ddd6ca2a8334a5249831282e70d059dc0e09304c72'
+sha256sums=('b497f74d6cc7ee58ff824457427acc02c6f7a102e483816fbb1b2494942ef983'
             'bcaaf2e995dec828cac9cc8c0efe9deab9a369f476b502b2a8ef1e58cb9f4eda'
             '862161b0e139a0c501b7c1d1941189234018d9730013f3bb23797a7893a098f5'
             '790126915b39e5838ff77e2f416f3652ca69a380282f60c82a7c2f8eae516094'
