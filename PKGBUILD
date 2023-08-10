@@ -4,7 +4,7 @@
 
 pkgname=3proxy
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiny crossplatform proxy server"
 arch=('any')
 url="http://www.3proxy.ru/"
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('glibc')
 makedepends=('gcc' 'make')
 backup=(etc/3proxy/3proxy.cfg
-        etc/logrotate.d/nginx)
+        etc/logrotate.d/3proxy)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/z3APA3A/$pkgname/archive/$pkgver.tar.gz"
         "$pkgname.service"
         "sysusers"

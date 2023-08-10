@@ -1,7 +1,7 @@
 pkgbase = 3proxy
 	pkgdesc = A tiny crossplatform proxy server
 	pkgver = 0.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.3proxy.ru/
 	arch = any
 	license = BSD
@@ -9,7 +9,7 @@ pkgbase = 3proxy
 	makedepends = make
 	depends = glibc
 	backup = etc/3proxy/3proxy.cfg
-	backup = etc/logrotate.d/nginx
+	backup = etc/logrotate.d/3proxy
 	source = 3proxy-0.9.4.tar.gz::https://github.com/z3APA3A/3proxy/archive/0.9.4.tar.gz
 	source = 3proxy.service
 	source = sysusers
