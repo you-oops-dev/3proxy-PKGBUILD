@@ -4,7 +4,7 @@
 
 pkgname=3proxy
 pkgver=0.9.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A tiny crossplatform proxy server"
 arch=('any')
 url="http://www.3proxy.ru/"
@@ -51,6 +51,10 @@ package() {
   make install DESTDIR="$pkgdir" ETCDIR="$pkgdir/etc/$pkgname"  INITDIR="$pkgdir/etc/init.d" BINDIR="$pkgdir/usr/bin"
 #Fix name binary See ---> https://github.com/BlackArch/blackarch/blob/c950db958b3d3ef212b185e46707838798ca9557/packages/3proxy/PKGBUILD#L40
   mv "$pkgdir/usr/bin/proxy" "$pkgdir/usr/bin/$pkgname-proxy"
+## Fix conflict with extra/libproxy. See ---> https://github.com/BlackArch/blackarch/blob/4036d65c1e7b554c5d509f966efff8a2e632d231/packages/3proxy/PKGBUILD#L62
+  mv -vf "$pkgdir/usr/share/man/man8/proxy.8" \
+    "$pkgdir/usr/share/man/man8/$pkgname-proxy.8"
+
   install -dm 755 "$pkgdir/usr/lib/systemd/system/" \
                   "$pkgdir/usr/lib/$pkgname" \
                   "$pkgdir/usr/share/licenses/$pkgname/" \
