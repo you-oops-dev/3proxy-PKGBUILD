@@ -4,7 +4,7 @@
 
 pkgname=3proxy
 pkgver=0.9.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A tiny crossplatform proxy server"
 arch=('any')
 url="http://www.3proxy.ru/"
@@ -18,13 +18,14 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/z3APA3A/$pkgname/archive/$p
         "sysusers"
         "tmpfiles"
         "logrotate.3proxy"
+	"https://gitlab.alpinelinux.org/alpine/aports/-/raw/87e5ea0bdf650320199ba07cbd7019d81540490c/testing/3proxy/gcc14.patch"
 )
-
 sha256sums=('b497f74d6cc7ee58ff824457427acc02c6f7a102e483816fbb1b2494942ef983'
             'bcaaf2e995dec828cac9cc8c0efe9deab9a369f476b502b2a8ef1e58cb9f4eda'
             '862161b0e139a0c501b7c1d1941189234018d9730013f3bb23797a7893a098f5'
             '790126915b39e5838ff77e2f416f3652ca69a380282f60c82a7c2f8eae516094'
-            'bf5933cc2fc13fc5de633d23dad7651188af8e740f03a468f2a86df6dc4d2ef8')
+            'bf5933cc2fc13fc5de633d23dad7651188af8e740f03a468f2a86df6dc4d2ef8'
+            'ce535a98468e51144ef2a78bbce53d33824b96a1b474bfb076b44a945fa93a5a')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -37,6 +38,8 @@ prepare() {
   sed -i -e "s/CC = gcc/CC ?= gcc/" ./Makefile.Linux
   sed -i -e "s/LN = gcc/LN ?= gcc/" ./Makefile.Linux
   #sed -i '137,$d' ./Makefile
+#Fix build with gcc 14
+patch -Np1 -i $srcdir/gcc14.patch
 }
 
 build() {
