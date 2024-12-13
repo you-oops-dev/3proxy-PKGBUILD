@@ -1,7 +1,7 @@
 pkgbase = 3proxy
 	pkgdesc = A tiny crossplatform proxy server
 	pkgver = 0.9.4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.3proxy.ru/
 	arch = any
 	license = BSD
@@ -15,10 +15,12 @@ pkgbase = 3proxy
 	source = sysusers
 	source = tmpfiles
 	source = logrotate.3proxy
+	source = https://gitlab.alpinelinux.org/alpine/aports/-/raw/87e5ea0bdf650320199ba07cbd7019d81540490c/testing/3proxy/gcc14.patch
 	sha256sums = b497f74d6cc7ee58ff824457427acc02c6f7a102e483816fbb1b2494942ef983
 	sha256sums = bcaaf2e995dec828cac9cc8c0efe9deab9a369f476b502b2a8ef1e58cb9f4eda
 	sha256sums = 862161b0e139a0c501b7c1d1941189234018d9730013f3bb23797a7893a098f5
 	sha256sums = 790126915b39e5838ff77e2f416f3652ca69a380282f60c82a7c2f8eae516094
 	sha256sums = bf5933cc2fc13fc5de633d23dad7651188af8e740f03a468f2a86df6dc4d2ef8
+	sha256sums = ce535a98468e51144ef2a78bbce53d33824b96a1b474bfb076b44a945fa93a5a
 
 pkgname = 3proxy
