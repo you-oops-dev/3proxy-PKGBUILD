@@ -1,1 +1,1 @@
-## 3proxy [![PKGBUILD-validate](https://github.com/naruto522ru/3proxy-PKGBUILD/actions/workflows/PKGBUILD-validate.yml/badge.svg)](https://github.com/naruto522ru/3proxy-PKGBUILD/actions/workflows/PKGBUILD-validate.yml)
+## 3proxy [![PKGBUILD-validate](https://github.com/you-oops-dev/3proxy-PKGBUILD/actions/workflows/PKGBUILD-validate.yml/badge.svg)](https://github.com/you-oops-dev/3proxy-PKGBUILD/actions/workflows/PKGBUILD-validate.yml)
