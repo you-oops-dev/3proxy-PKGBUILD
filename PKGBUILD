@@ -1,5 +1,5 @@
 # Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
-# Unofficial Maintainer: you-oops-dev <The profile (AUR) has all the contacts for communication or write to GitHub>
+# Unofficial Maintainer: you-oopsdev <The profile (AUR) has all the contacts for communication or write to GitHub>
 # Contributor:: Ilya Basin <basinilya at gmail dot com>
 
 pkgname=3proxy
