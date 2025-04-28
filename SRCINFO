@@ -8,6 +8,7 @@ pkgbase = 3proxy
 	makedepends = gcc
 	makedepends = make
 	depends = glibc
+	options = !lto
 	backup = etc/3proxy/3proxy.cfg
 	backup = etc/logrotate.d/3proxy
 	source = 3proxy-0.9.4.tar.gz::https://github.com/z3APA3A/3proxy/archive/0.9.4.tar.gz

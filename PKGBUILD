@@ -11,6 +11,7 @@ url="http://www.3proxy.ru/"
 license=('BSD')
 depends=('glibc')
 makedepends=('gcc' 'make')
+options=('!lto')
 backup=(etc/3proxy/3proxy.cfg
         etc/logrotate.d/3proxy)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/z3APA3A/$pkgname/archive/$pkgver.tar.gz"
